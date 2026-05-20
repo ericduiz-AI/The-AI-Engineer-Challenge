@@ -383,3 +383,149 @@ Who else is diving into the world of AI? Let's connect! 🌐💡
 
 #FirstLLMApp 
 ```
+
+---
+
+## Challenge Completion Notes
+
+### Deployment Mode
+
+This project was completed using a mock backend mode to avoid paid OpenAI API calls.
+
+The application keeps the expected `/api/chat` contract: the frontend sends a JSON payload with a `message`, and the backend returns a JSON response with a `reply`. In this implementation, `MOCK_OPENAI=true` makes the backend return a deterministic mock response instead of calling the OpenAI API.
+
+This allows the full application flow to be tested end-to-end:
+
+- Static frontend served by FastAPI
+- User input submitted from the browser
+- Request sent to `/api/chat`
+- Backend response rendered in the frontend
+- Deployment tested on Vercel
+
+A live OpenAI integration path remains available in the backend, but it requires an API key with available quota.
+
+---
+
+## Activity #1: General Capability Vibe Check
+
+### Prompt 1
+
+Explain the concept of object-oriented programming in simple terms to a complete beginner.
+
+**Aspect tested:** Conceptual explanation.
+
+**Result:**  
+The app returned a mock response confirming that the backend received the prompt successfully.
+
+### Prompt 2
+
+Summarize the key points of a paragraph.
+
+**Aspect tested:** Summarization.
+
+**Result:**  
+The app returned a mock response. This validates the technical flow, but not real summarization quality.
+
+### Prompt 3
+
+Write a short creative story about a robot finding friendship.
+
+**Aspect tested:** Creative writing.
+
+**Result:**  
+The app returned a mock response. Creative generation would require enabling live model calls.
+
+### Prompt 4
+
+Solve a simple arithmetic reasoning question.
+
+**Aspect tested:** Basic reasoning.
+
+**Result:**  
+The app returned a mock response. The application flow works, but reasoning quality is not evaluated in mock mode.
+
+### Prompt 5
+
+Rewrite a paragraph in a professional tone.
+
+**Aspect tested:** Rewriting and style transfer.
+
+**Result:**  
+The app returned a mock response. Style transfer would require a live LLM response.
+
+### Question #1
+
+Do the answers appear to be correct and useful?
+
+**Answer:**  
+The answers are useful for validating the application flow, but they do not evaluate real LLM capabilities because the app is running in `MOCK_OPENAI=true` mode. The frontend, backend, request handling, API contract and deployment work correctly. Actual model quality would need to be tested with live OpenAI API calls.
+
+---
+
+## Activity #2: Personal Use Vibe Check
+
+### Prompt 1
+
+Analyze a potential investment opportunity and identify key market, company and transaction risks.
+
+**Result:**  
+The app returned a mock response. This confirms that the application can accept investment-related prompts, but it does not yet provide real analytical output.
+
+### Prompt 2
+
+Generate commercial due diligence questions for an agrotech company.
+
+**Result:**  
+The app returned a mock response. This would be a relevant use case for my workflow, but substantive answers require live LLM integration.
+
+### Prompt 3
+
+Summarize company research notes into key investment diligence questions.
+
+**Result:**  
+The app returned a mock response. The technical flow works, but real summarization and question generation are not evaluated in mock mode.
+
+### Question #2
+
+Are the vibes of your assistant aligned with your expectations?
+
+**Answer:**  
+From a product and workflow perspective, yes: the app has a simple interface, accepts user input, sends it to the backend and displays a response. However, because the app is intentionally running in mock mode to avoid paid API calls, it does not yet provide real analytical value. The next step would be enabling live model calls or connecting another available inference provider.
+
+---
+
+## Activity #3: Capability Gaps Vibe Check
+
+### Prompt 1
+
+What is the latest market size estimate for the Spanish agrotech sector?
+
+**Result:**  
+The app returned a mock response. Even with a live model, this task would require real-time web access or a trusted data source.
+
+### Prompt 2
+
+What meetings do I have tomorrow and what should I prepare for each one?
+
+**Result:**  
+The app returned a mock response. This capability would require calendar access, authentication and tool integration.
+
+### Question #3
+
+What are some limitations of your application?
+
+**Answer:**  
+The main limitation is that the deployed app currently runs in `MOCK_OPENAI=true` mode, so it does not call a live LLM. It validates the architecture but not the quality of model responses. The app also has no memory, no authentication, no document upload, no RAG pipeline, no real-time web access and no external tool integrations. For production use, it would need secure API key management, live model access, better error handling, logging, rate limiting, evaluation tests and a more robust frontend.
+
+---
+
+## Optional: Improve Your App
+
+### Adjustments Made
+
+I added a mock mode controlled by the `MOCK_OPENAI` environment variable. This allows the full frontend-backend-deployment flow to be tested without paid OpenAI API calls. I also added a simple static frontend connected to the FastAPI backend through `/api/chat`.
+
+### Results
+
+The app works locally and on Vercel. The frontend sends user messages to the backend and displays the backend response. In mock mode, the response confirms that the request was received successfully. The app is ready for live LLM integration once an API key with available quota is configured.
+
