@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Engineer Challenge</title>
+  <link rel="stylesheet" href="/frontend/styles.css" />
+</head>
+<body>
+  <main class="page">
+    <section class="card">
+      <p class="eyebrow">AI Engineer Challenge</p>
+      <h1>Mock LLM Chat App</h1>
+      <p class="subtitle">
+        A simple frontend connected to a FastAPI backend. This version uses mock mode,
+        so it works without paid OpenAI API calls.
+      </p>
+
+      <form id="chat-form" class="chat-form">
+        <textarea
+          id="message"
+          placeholder="Ask something..."
+          rows="4"
+          required
+        ></textarea>
+
+        <button type="submit" id="submit-button">
+          Send message
+        </button>
+      </form>
+
+      <section class="response-box">
+        <h2>Response</h2>
+        <p id="response">Your assistant response will appear here.</p>
+      </section>
+
+      <p class="footer-note">
+        Backend endpoint: <code>/api/chat</code>
+      </p>
+    </section>
+  </main>
+
+  <script src="/frontend/app.js"></script>
+</body>
+</html>
